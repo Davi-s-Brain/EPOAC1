@@ -7,10 +7,7 @@ void somabit(int b1, int b2, int* vaium, int* soma) {
 }
 
 int main() {
-  int b1 = 0;
-  int b2 = 0;
-  int vaium = 0;
-  int soma;
+  int b1 = 0, b2 = 0, vaium = 0, soma;
 
   somabit(b1, b2, &vaium, &soma);
 
