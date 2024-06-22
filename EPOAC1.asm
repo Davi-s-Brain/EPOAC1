@@ -4,6 +4,30 @@
 main: 
     lw $t0, $b1 # Carrega o valor de b1 em t0
     lw $t1, $b2 # Carrega o valor de b2 em t1
+    jal somabit # Chama a função somabit
+    j fim # Pula para o fim
+
+fim:
+    la $a0, $resultadoSoma # Printando o resultado da soma
+    li $v0, 4
+    syscall
+
+    move $a0, $t7 # Transferindo o conteúdo do registrador t6 para a0
+    li $v0, 1
+    syscall
+  
+    la $a0, $resultadoVaiUm # Carrega o endereço da string em a3
+    li $v0, 4
+    syscall
+
+    move $a0, $t6 # Printando o vai-um
+    li $v0, 1 
+    syscall
+
+    li $v0, 10 # Termina o programa
+    syscall
+
+somabit:
     xor $t2, $t0, $t1 # Faz a operação XOR entre t0 e t1 e armazena em t2
     addi $sp, $sp, -4 # Decrementa o ponteiro de pilha
     sw $t2, 0($sp) # Armazena o valor de t2 na pilha
@@ -37,30 +61,13 @@ main:
     or $t4, $t0, $t1
     or $t6, $t4, $t2 # Faz a operação OR entre t4 e t2 e armazena em t5, SOMA ESTÁ EM T5
 
-    la $a0, $resultadoSoma # Printando o resultado da soma
-    li $v0, 4
-    syscall
-
-    move $a0, $t7 # Transferindo o conteúdo do registrador t6 para a0
-    li $v0, 1
-    syscall
-  
-    la $a0, $resultadoVaiUm # Carrega o endereço da string em a3
-    li $v0, 4
-    syscall
-
-    move $a0, $t6 # Printando o vai-um
-    li $v0, 1 
-    syscall
-
-    li $v0, 10 # Termina o programa
-    syscall
+    jr $ra
 
 
 .data 
 $b1: .word 1
 $b2: .word 0
-$vaium: .word 0
+$vaium: .word 1
 $soma: .word 0
 $resultadoSoma: .asciiz "Resultado da soma: "
 $resultadoVaiUm: .asciiz " Resultado do vai-um: "
