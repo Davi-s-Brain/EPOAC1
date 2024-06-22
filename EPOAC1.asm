@@ -53,6 +53,9 @@ main:
     li $v0, 1 
     syscall
 
+    li $v0, 10 # Termina o programa
+    syscall
+
 
 .data 
 $b1: .word 1
