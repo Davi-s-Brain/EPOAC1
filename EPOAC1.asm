@@ -65,9 +65,9 @@ somabit:
 
 
 .data 
-$b1: .word 1
+$b1: .word 1 # Declaração dos bits de b1 e b2
 $b2: .word 0
-$vaium: .word 1
+$vaium: .word 1 # Declaração do vai-um e do resultado da soma
 $soma: .word 0
 $resultadoSoma: .asciiz "Resultado da soma: "
 $resultadoVaiUm: .asciiz " Resultado do vai-um: "
