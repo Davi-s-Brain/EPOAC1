@@ -2,8 +2,8 @@
 .globl main
 
 main: 
-    lw $t0, $b1 # Carrega o valor de b1 em t0
-    lw $t1, $b2 # Carrega o valor de b2 em t1
+    lw $a0, $b1 # Carrega o valor de b1 em t0
+    lw $a1, $b2 # Carrega o valor de b2 em t1
     jal somabit # Chama a função somabit
     j fim # Pula para o fim
 
@@ -28,7 +28,7 @@ fim:
     syscall
 
 somabit:
-    xor $t2, $t0, $t1 # Faz a operação XOR entre t0 e t1 e armazena em t2
+    xor $t2, $a0, $a1 # Faz a operação XOR entre t0 e t1 e armazena em t2
     addi $sp, $sp, -4 # Decrementa o ponteiro de pilha
     sw $t2, 0($sp) # Armazena o valor de t2 na pilha
     lw $t0, $vaium # Carrega o valor de vaium em t0
